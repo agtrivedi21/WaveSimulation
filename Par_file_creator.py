@@ -12,12 +12,20 @@ import shutil
 import random as rand
 import numpy as np
 import matplotlib.pyplot as plt
-    
-numNewFiles = 3
+
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument("-numFiles", "--numNewFiles", type=int, help="number of new files to create")
+
+args = vars(parser.parse_args())
+
+files = args['numNewFiles']    
+numNewFiles = files
 
 # Single source generation files:  
 max_location = 2500 #deepest source location desired (meters)   
-numSourceFile = numNewFiles
+numSourceFile = files
 
 
 for i in range(0,numSourceFile):
@@ -36,7 +44,7 @@ for i in range(0,numSourceFile):
     
 ### Generate par files AFTER materials and meshing files are created
 
-numParFile = numNewFiles
+numParFile = files
 
 title = 'first test'
 NOISE_TOMOGRAPHY = 0
@@ -75,7 +83,7 @@ nbregions                       = 5              # then set below the different 
 # 1 80 41 60 3
 # 60 70 21 40 4
 
-numSetups = numNewFiles
+numSetups = files
 
 for i in range(0,numSetups):
     
