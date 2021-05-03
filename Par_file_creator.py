@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Mar 25 22:24:43 2021
+Last edited on May 3, 2021
 
 @author: anu
 """
@@ -77,6 +78,10 @@ nbregions                       = 5              # then set below the different 
 numSetups = numNewFiles
 
 for i in range(0,numSetups):
+    
+    fileName = "Model_Geometry" + str(i)
+    f = open(fileName + ".txt","w+")
+
     matArr = np.zeros((nbregions-1, 5)) + 4
     imageArr = np.zeros((nx, nx)) + 4
     xChunks = np.array([0, rand.randint(1,nx-1), rand.randint(1,nx-1), nx])
@@ -94,7 +99,9 @@ for i in range(0,numSetups):
     imageArr[xChunks[0]:xChunks[3], yChunks[2]:yChunks[3]] = rand.randint(1,3)
     
     #write the matArr to the parFile
-    
+    f.writelines(np.array2string(matArr))
+    f.close()
+
 plt.imshow(imageArr)
 plt.colorbar()
     
