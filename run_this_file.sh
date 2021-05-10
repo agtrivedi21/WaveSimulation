@@ -1,7 +1,4 @@
-# number of files to create
-numFiles = 3
-
-# run the file creator
+# run the file creator, use flag -numFiles to specify number of files to be created
 python Par_file_creator.py -numFiles 3 
 
 
